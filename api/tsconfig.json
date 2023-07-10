@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["ESNext", "ES6", "ES7", "ES5"],
+    "target": "es2018",
+    "lib": ["dom", "es6", "es2018", "esnext.asynciterable"],
     "module": "CommonJS",
     "sourceMap": true,
     "outDir": ".build",
@@ -14,7 +14,9 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
   },
-  "exclude": ["node_modules", "**/*.js"]
+  "exclude": ["node_modules", "**/*.js"],
+	"include": ["./**/*.ts",]
 }
