@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeContextProvider } from "./contexts/ColorModeContext";
 import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(
@@ -11,10 +9,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <ThemeContextProvider>
-      <CssBaseline />
-      <App />
-    </ThemeContextProvider>
+    <App />
   </React.StrictMode>
 );
 
