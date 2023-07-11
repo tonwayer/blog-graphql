@@ -1,3 +1,5 @@
+version: '3'
+
 services:
 
   webapp:
@@ -19,7 +21,7 @@ services:
     image: api:latest
     container_name: api
     ports:
-      - 8000:8000
+      - 4000:4000
     build:
       context: ./api
       dockerfile: dockerfile
@@ -27,6 +29,22 @@ services:
       - ./api:/api
     networks:
       - app_network
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=article
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    networks: 
+      - app_network
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
 networks:
   app_network:
