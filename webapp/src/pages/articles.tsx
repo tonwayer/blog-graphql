@@ -1,46 +1,29 @@
 import { Layout } from "../components/Layout";
-import { useEffect, useState } from "react";
-import { useCheckout } from "../hooks/useCheckout";
 import { ArticleCard } from "../components/ArticleCard";
 import { Grid, Typography, Container, Box } from "@mui/material";
-import { toast } from "../utils/toast";
+import { gql } from "../__generated__";
+import { useQuery } from "@apollo/client";
+
+const ARTICLES_QUERY = gql(`
+  query GetArticles {
+    articles {
+      id
+      title
+      author
+      numberOfViews
+      content
+      description
+      thumbnail
+    }
+  }
+`);
 
 export const Articles = () => {
-  const { state, buy, getItems } = useCheckout();
-  const { items, balance } = state;
-  const [isLoading, setIsLoading] = useState(false);
-  const handleBuyItem = async (itemId: number) => {
-    try {
-      setIsLoading(true);
-      await buy(itemId);
-      toast.success("Successfully purchased");
-    } catch (error) {
-      let message = "unknown error";
-      if (error instanceof Error) message = error.message;
-      toast.error(message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    (async () => {
-      try {
-        setIsLoading(true);
-        await getItems();
-        toast.success("Successfully purchased");
-      } catch (error) {
-        let message = "unknown error";
-        if (error instanceof Error) message = error.message;
-        toast.error(message);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
-  }, []);
+  const { loading, error, data } = useQuery(ARTICLES_QUERY);
+  console.log(loading, error, data);
 
   return (
-    <Layout isLoading={isLoading}>
+    <Layout isLoading={loading}>
       <Box
         sx={{
           bgcolor: "background.paper",
@@ -57,24 +40,12 @@ export const Articles = () => {
           >
             Welcome to Eric&#39;s blog.
           </Typography>
-          <Typography
-            variant="h5"
-            align="center"
-            color="text.secondary"
-            paragraph
-          >
-            Your balance: ${balance}
-          </Typography>
         </Container>
       </Box>
       <Container sx={{ py: 8 }} maxWidth="md">
         <Grid container spacing={4}>
-          {items?.map((item) => (
-            <ArticleCard
-              item={item}
-              key={item.id}
-              onBuy={() => handleBuyItem(item.id)}
-            />
+          {data?.articles.map((article) => (
+            <ArticleCard article={article} key={article.id} />
           ))}
         </Grid>
       </Container>
