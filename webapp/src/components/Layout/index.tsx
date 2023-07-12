@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { Navbar } from "../Navbar";
 import { SnackbarProvider } from "notistack";
-import { darkTheme, lightTheme } from "../../themes";
+import { darkTheme, lightTheme } from "../../utils/themes";
 import { useThemeMode } from "../../contexts/ColorModeContext";
 import { ThemeProvider } from "@emotion/react";
 import { LoadingBackdrop } from "../LoadingBackdrop";

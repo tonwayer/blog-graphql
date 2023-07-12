@@ -13,7 +13,7 @@ interface IItemCard {
   onBuy: () => void;
 }
 
-export const ItemCard = ({ item, onBuy }: IItemCard) => {
+export const ArticleCard = ({ item, onBuy }: IItemCard) => {
   const handleBuy = () => {
     onBuy();
   };

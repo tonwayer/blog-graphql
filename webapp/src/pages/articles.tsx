@@ -1,7 +1,7 @@
 import { Layout } from "../components/Layout";
 import { useEffect, useState } from "react";
 import { useCheckout } from "../hooks/useCheckout";
-import { ItemCard } from "../components/ItemCard";
+import { ArticleCard } from "../components/ArticleCard";
 import { Grid, Typography, Container, Box } from "@mui/material";
 import { toast } from "../utils/toast";
 
@@ -70,7 +70,7 @@ export const Articles = () => {
       <Container sx={{ py: 8 }} maxWidth="md">
         <Grid container spacing={4}>
           {items?.map((item) => (
-            <ItemCard
+            <ArticleCard
               item={item}
               key={item.id}
               onBuy={() => handleBuyItem(item.id)}

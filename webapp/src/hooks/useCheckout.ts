@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IItem } from "../interfaces/IItem";
-import { buyItem, getItems } from "../apis";
+import { buyItem, getItems } from "../utils/apis";
 
 type UseCheckout = {
   state: CheckoutState;
