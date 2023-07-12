@@ -6,6 +6,7 @@ The application is comprised of 2 parts
 
 1. webapp -> Frontend for the applicaiton (written in React and Typescript, MUI)
 2. api -> Backend (written in Node.js)
+3. db -> DB using MySql
 
 ## Requirements
 
@@ -17,24 +18,21 @@ The application is comprised of 2 parts
 
 ### webapp
 
-The client side applicaiton uses node version 17, node 16 should also work as well. From the root of the `webapp` directory install the node dependencies using the command bellow
+The client side application uses node version 18 From the root of the `webapp` directory install the node dependencies using the command bellow
 
 ```Bash
-npm ci
+npm install
 ```
 
 and build the docker image for the webapp container using the command bellow from the root of the `webapp` directory
 
-```Bash
-docker build -t webapp:latest .
-```
 
 ### api
 
-To build the docker image for api.orders run the command bellow from the root of the `api.orders` directory
+The client side application uses node version 18 From the root of the `webapp` directory install the node dependencies using the command bellow
 
 ```Bash
-docker build -t api:latest .
+npm install
 ```
 
 ### Starting the application
@@ -45,6 +43,4 @@ To start application run the following command from the root directory
 docker compose up -d
 ```
 
-To connect to the app go to [http://localhost:80](http://localhost:80)
-
-NOTE: If you see an NGINX 502 wait a couple of seconds, then refresh the page. It just means node is not done compiling the application
+To connect to the app go to [http://localhost:3000](http://localhost:3000)
