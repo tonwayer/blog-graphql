@@ -2,30 +2,34 @@ import { Field, ObjectType } from "type-graphql"
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm"
 
 @ObjectType()
-@Entity("articles")
+@Entity({ name: "article" })
 export class Article extends BaseEntity {
 
-  @Field()
+  @Field(() => String)
   @PrimaryGeneratedColumn()
   id: number
 
-  @Field()
+  @Field(() => String)
   @Column()
   title: string
 
-  @Field()
+  @Field(() => String)
   @Column()
-  arthur: string
+  author: string
 
-  @Field()
+  @Field(() => Number)
   @Column({ default: 0 })
   numberOfViews: number
 
-  @Field()
+  @Field(() => String)
   @Column({ type: "text" })
   content: string
 
-  @Field()
+  @Field(() => String)
   @Column()
   description: string
+
+  @Field(() => String)
+  @Column()
+  thumbnail: string
 }

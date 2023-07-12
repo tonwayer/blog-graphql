@@ -1,2 +1,7 @@
+.idea/
+.vscode/
 /node_modules
+tmp/
+temp/
+yarn-error.log
 /.build
