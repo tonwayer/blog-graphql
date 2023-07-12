@@ -1,10 +1,10 @@
 import { Layout } from "../components/Layout";
-import { ArticleCard } from "../components/ArticleCard";
+import { ArticleCard } from "../containers/ArticleCard";
 import { Grid, Typography, Container, Box } from "@mui/material";
 import { gql } from "../__generated__";
 import { useQuery } from "@apollo/client";
 
-const ARTICLES_QUERY = gql(`
+const GET_ARTICLES_QUERY = gql(`
   query GetArticles {
     articles {
       id
@@ -19,8 +19,7 @@ const ARTICLES_QUERY = gql(`
 `);
 
 export const Articles = () => {
-  const { loading, error, data } = useQuery(ARTICLES_QUERY);
-  console.log(loading, error, data);
+  const { loading, data } = useQuery(GET_ARTICLES_QUERY);
 
   return (
     <Layout isLoading={loading}>
@@ -38,7 +37,7 @@ export const Articles = () => {
             color="text.secondary"
             paragraph
           >
-            Welcome to Eric&#39;s blog.
+            Welcome to Eric&#39;s blog!
           </Typography>
         </Container>
       </Box>

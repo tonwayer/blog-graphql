@@ -3,15 +3,14 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import { Markdown } from "../Markdown";
+import { Article } from "../../__generated__/graphql";
 
 interface MainProps {
-  post: string;
-  title: string;
+  post: Article;
 }
 
-export default function Main(props: MainProps) {
-  const { post, title } = props;
-
+export default function Main({ post }: MainProps) {
+  const { content, title } = post;
   return (
     <Grid
       item
@@ -27,8 +26,8 @@ export default function Main(props: MainProps) {
         {title}
       </Typography>
       <Divider />
-      <Markdown className="markdown" key={post.substring(0, 40)}>
-        {post}
+      <Markdown className="markdown" key={content.substring(0, 40)}>
+        {content}
       </Markdown>
     </Grid>
   );

@@ -1,5 +1,4 @@
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -10,14 +9,35 @@ import {
 } from "@mui/material";
 import { Article } from "../../__generated__/graphql";
 import { Link as RouterLink } from "react-router-dom";
+import { gql } from "../../__generated__";
+import { useMutation } from "@apollo/client";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
-interface IArticleCard {
+interface IArticleCardProps {
   article: Article;
 }
 
-export const ArticleCard = ({ article }: IArticleCard) => {
+const INCREASE_NUMBER_OF_VIEWS = gql(`
+  mutation IncreaseNumberOfViews($articleId: Float!) {
+    increaseNumberOfViews(id: $articleId) {
+      id
+      title
+      author
+      numberOfViews
+      content
+      description
+      thumbnail
+    }
+  }
+`);
+
+export const ArticleCard = ({ article }: IArticleCardProps) => {
+  const { id } = article;
+  const [increaseNumberOfViews] = useMutation(INCREASE_NUMBER_OF_VIEWS, {
+    variables: { articleId: Number(id) },
+  });
   const handleClick = () => {
-    //TODO Add mutation
+    increaseNumberOfViews();
   };
 
   return (
@@ -32,10 +52,13 @@ export const ArticleCard = ({ article }: IArticleCard) => {
           }}
         />
         <CardContent sx={{ flexGrow: 1 }}>
+          <Typography display="flex">
+            <VisibilityIcon />: {article.numberOfViews}
+          </Typography>
           <Typography gutterBottom variant="h5" component="h2">
             {article.title}
           </Typography>
-          <Typography>{article.description} </Typography>
+          <Typography>{article.description}</Typography>
         </CardContent>
         <CardActions>
           <Link

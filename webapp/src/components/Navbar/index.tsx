@@ -1,8 +1,16 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
-import StorefrontIcon from "@mui/icons-material/Storefront";
+import {
+  AppBar,
+  Box,
+  IconButton,
+  Link,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { useThemeMode } from "../../contexts/ColorModeContext";
 import DarkIcon from "@mui/icons-material/Brightness4";
 import LightIcon from "@mui/icons-material/Brightness7";
+import { Link as RouterLink } from "react-router-dom";
+import { Book } from "@mui/icons-material";
 
 export const Navbar = () => {
   const { darkMode, toggleColorMode } = useThemeMode();
@@ -10,10 +18,10 @@ export const Navbar = () => {
   return (
     <AppBar position="relative">
       <Toolbar>
-        <StorefrontIcon sx={{ mr: 2 }} />
-        <Typography variant="h6" color="inherit" noWrap>
-          Online shop
-        </Typography>
+        <Book sx={{ mr: 2 }} />
+        <Link component={RouterLink} to="/" sx={{ color: "white" }}>
+          Blog
+        </Link>
         <IconButton
           sx={{ ml: 1 }}
           onClick={() => toggleColorMode()}
