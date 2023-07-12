@@ -55,12 +55,12 @@ export const Articles = () => {
             color="text.secondary"
             paragraph
           >
-            Welcome to Eric's online shop.
+            Welcome to Eric&#39;s blog.
           </Typography>
           <Typography
             variant="h5"
             align="center"
-            color="text.secondary"  
+            color="text.secondary"
             paragraph
           >
             Your balance: ${balance}

@@ -14,16 +14,12 @@ interface ILayout {
 export const Layout = ({ children, isLoading }: ILayout) => {
   const { darkMode } = useThemeMode();
   const theme = useMemo(() => (darkMode ? darkTheme : lightTheme), [darkMode]);
-  
+
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      <main>
-        {children}
-      </main>
-      {
-        isLoading !== undefined && <LoadingBackdrop open={isLoading} />
-      }
+      <main>{children}</main>
+      {isLoading !== undefined && <LoadingBackdrop open={isLoading} />}
       <SnackbarProvider />
     </ThemeProvider>
   );

@@ -6,5 +6,5 @@ export const toast = {
   },
   error: (msg: string) => {
     enqueueSnackbar(msg, { variant: "error" });
-  }
+  },
 };

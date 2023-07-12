@@ -13,4 +13,4 @@ export const Article = () => {
       </main>
     </Container>
   );
-}
+};

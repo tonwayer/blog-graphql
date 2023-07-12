@@ -1,12 +1,14 @@
-import * as React from 'react';
-import ReactMarkdown from 'markdown-to-jsx';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import Box from '@mui/material/Box';
+import * as React from "react";
+import ReactMarkdown from "markdown-to-jsx";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import Box from "@mui/material/Box";
 
-function MarkdownListItem(props: any) {
-  return <Box component="li" sx={{ mt: 1, typography: 'body1' }} {...props} />;
-}
+type BoxPropsType = React.ComponentProps<typeof Box>;
+
+const MarkdownListItem = (props: BoxPropsType) => {
+  return <Box component="li" sx={{ mt: 1, typography: "body1" }} {...props} />;
+};
 
 const options = {
   overrides: {
@@ -14,23 +16,23 @@ const options = {
       component: Typography,
       props: {
         gutterBottom: true,
-        variant: 'h4',
-        component: 'h1',
+        variant: "h4",
+        component: "h1",
       },
     },
     h2: {
       component: Typography,
-      props: { gutterBottom: true, variant: 'h6', component: 'h2' },
+      props: { gutterBottom: true, variant: "h6", component: "h2" },
     },
     h3: {
       component: Typography,
-      props: { gutterBottom: true, variant: 'subtitle1' },
+      props: { gutterBottom: true, variant: "subtitle1" },
     },
     h4: {
       component: Typography,
       props: {
         gutterBottom: true,
-        variant: 'caption',
+        variant: "caption",
         paragraph: true,
       },
     },
@@ -45,6 +47,8 @@ const options = {
   },
 };
 
-export default function Markdown(props: any) {
+type ReactMarkdownPropsType = React.ComponentProps<typeof ReactMarkdown>;
+
+export const Markdown = (props: ReactMarkdownPropsType) => {
   return <ReactMarkdown options={options} {...props} />;
-}
+};

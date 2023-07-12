@@ -42,7 +42,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "lint": "npx ./node_modules/eslint --fix"
+    "lint": "eslint . --ignore-path .gitignore --ext .js,.jsx,.tsx,.ts",
+    "lint:fix": "eslint --fix --ignore-path .gitignore . --ext .js,.jsx,.tsx,.ts"
   },
   "eslintConfig": {
     "extends": [

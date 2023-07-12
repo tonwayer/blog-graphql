@@ -1,8 +1,8 @@
-import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import Markdown from '../Markdown';
+import * as React from "react";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import { Markdown } from "../Markdown";
 
 interface MainProps {
   post: string;
@@ -18,7 +18,7 @@ export default function Main(props: MainProps) {
       xs={12}
       md={8}
       sx={{
-        '& .markdown': {
+        "& .markdown": {
           py: 3,
         },
       }}
@@ -27,9 +27,9 @@ export default function Main(props: MainProps) {
         {title}
       </Typography>
       <Divider />
-        <Markdown className="markdown" key={post.substring(0, 40)}>
-          {post}
-        </Markdown>
+      <Markdown className="markdown" key={post.substring(0, 40)}>
+        {post}
+      </Markdown>
     </Grid>
   );
 }
